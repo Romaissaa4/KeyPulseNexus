@@ -13,15 +13,16 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0a1a2a, #050b12);
+  background: radial-gradient(circle at top, #071a2b, #050b12);
   color: #eaf6ff;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* Glow background effect */
+/* floating glow animation */
 .glow {
   position: absolute;
   width: 600px;
@@ -29,46 +30,71 @@ body {
   background: #16c6e5;
   filter: blur(180px);
   opacity: 0.15;
-  top: -100px;
-  left: -100px;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Card */
+@keyframes float {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(80px, -60px); }
+  100% { transform: translate(0,0); }
+}
+
+/* Card animation */
 .container {
   position: relative;
   background: rgba(13, 28, 48, 0.85);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   padding: 50px;
   border-radius: 20px;
   width: 650px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
   border: 1px solid rgba(22, 198, 229, 0.2);
+
+  /* entrance animation */
+  animation: fadeIn 1.2s ease;
 }
 
-/* Title */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title animation */
 h1 {
-  font-size: 40px;
+  font-size: 42px;
   color: #16c6e5;
   margin-bottom: 10px;
-  letter-spacing: 1px;
+  animation: slideDown 1s ease;
 }
 
-/* Subtitle */
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* paragraph */
 p {
   color: #bcd3e6;
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 25px;
+  animation: fadeIn 1.5s ease;
 }
 
-/* Feature box */
+/* features */
 .features {
   text-align: left;
   margin: 20px 0;
   padding: 15px;
   background: rgba(255,255,255,0.03);
   border-radius: 12px;
+  animation: fadeIn 1.8s ease;
 }
 
 .features li {
@@ -77,7 +103,7 @@ p {
   font-size: 14px;
 }
 
-/* Button */
+/* button */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -87,13 +113,16 @@ p {
   font-weight: bold;
   text-decoration: none;
   border-radius: 12px;
-  transition: 0.3s ease;
-  box-shadow: 0 0 15px rgba(22,198,229,0.4);
+
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(22,198,229,0.4);
+
+  animation: fadeIn 2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(22,198,229,0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(22,198,229,0.7);
 }
 
 /* small text */
@@ -101,6 +130,7 @@ p {
   margin-top: 15px;
   font-size: 12px;
   color: #8aa9c6;
+  animation: fadeIn 2.2s ease;
 }
 </style>
 
@@ -115,15 +145,14 @@ p {
   <h1>KeyPulse Nexus</h1>
 
   <p>
-    A cybersecurity educational desktop simulation designed for
-    safe keyboard analytics, real-time session tracking,
-    and frequency visualization.
+    Cybersecurity educational desktop simulation for safe keyboard analytics,
+    session tracking, and frequency visualization.
   </p>
 
   <ul class="features">
-    <li>✔ Local typing sandbox (safe demo environment)</li>
-    <li>✔ Live key frequency analytics dashboard</li>
-    <li>✔ Session logging + exportable reports</li>
+    <li>✔ Local sandbox typing environment</li>
+    <li>✔ Real-time key frequency analytics</li>
+    <li>✔ Session logs + exportable reports</li>
     <li>✔ Visualization charts for presentations</li>
   </ul>
 
@@ -134,7 +163,7 @@ p {
   </a>
 
   <div class="small">
-    Windows Desktop App • Cybersecurity Academic Project • No system-wide monitoring
+    Windows App • Cybersecurity Academic Project • Safe Demo Environment
   </div>
 
 </div>
