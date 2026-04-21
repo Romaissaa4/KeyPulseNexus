@@ -1,3 +1,4 @@
+ HEAD
 # KeyPulse Nexus
 
 Polished classroom-safe desktop demo for keyboard analytics, designed for ethical hacking presentations.
@@ -50,3 +51,7 @@ dist\KeyPulseNexus.exe
 - `main.spec`: PyInstaller configuration
 - `build_exe.ps1`: EXE build script
 - `icon.ico`: application icon
+
+# KeyPulseNexus
+Educational keylogging simulation for cybersecurity research and detection techniques
+6348de9ba72d7626c776f039865b4a6c0e2954fd
