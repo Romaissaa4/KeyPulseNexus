@@ -2,171 +2,221 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>KeyPulse Nexus</title>
+<title>KeyPulse Nexus // SYSTEM</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
-  background: radial-gradient(circle at top, #071a2b, #050b12);
-  color: #eaf6ff;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  background: black;
   overflow: hidden;
+  font-family: "Courier New", monospace;
+  color: #00ff9d;
 }
 
-/* floating glow animation */
-.glow {
+/* MATRIX CANVAS */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* MAIN TERMINAL */
+.terminal {
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: #16c6e5;
-  filter: blur(180px);
-  opacity: 0.15;
-  animation: float 6s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 750px;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid #00ff9d;
+  box-shadow: 0 0 40px #00ff9d;
+  padding: 25px;
+  z-index: 2;
+  animation: flicker 2s infinite;
 }
 
-@keyframes float {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(80px, -60px); }
-  100% { transform: translate(0,0); }
+/* flicker effect */
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
 }
 
-/* Card animation */
-.container {
-  position: relative;
-  background: rgba(13, 28, 48, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 50px;
-  border-radius: 20px;
-  width: 650px;
-  text-align: center;
-  border: 1px solid rgba(22, 198, 229, 0.2);
-
-  /* entrance animation */
-  animation: fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Title animation */
+/* GLITCH TITLE */
 h1 {
-  font-size: 42px;
-  color: #16c6e5;
-  margin-bottom: 10px;
-  animation: slideDown 1s ease;
+  text-align: center;
+  font-size: 34px;
+  text-shadow: 0 0 10px #00ff9d;
+  animation: glitch 1.2s infinite;
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px,2px); }
+  40% { transform: translate(2px,-2px); }
+  60% { transform: translate(-1px,1px); }
+  80% { transform: translate(1px,-1px); }
+  100% { transform: translate(0); }
 }
 
-/* paragraph */
-p {
-  color: #bcd3e6;
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  animation: fadeIn 1.5s ease;
-}
-
-/* features */
-.features {
-  text-align: left;
-  margin: 20px 0;
-  padding: 15px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  animation: fadeIn 1.8s ease;
-}
-
-.features li {
-  margin: 8px 0;
-  color: #d9e9ff;
+/* TEXT AREA */
+#text {
+  white-space: pre-line;
   font-size: 14px;
+  line-height: 1.6;
+  color: #aaffcc;
+  min-height: 180px;
 }
 
-/* button */
+/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 14px 30px;
-  background: linear-gradient(90deg, #16c6e5, #1fd3a2);
-  color: #04111a;
-  font-weight: bold;
+  padding: 12px 25px;
+  background: #00ff9d;
+  color: black;
   text-decoration: none;
-  border-radius: 12px;
-
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(22,198,229,0.4);
-
-  animation: fadeIn 2s ease;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 35px rgba(22,198,229,0.7);
+  background: black;
+  color: #00ff9d;
+  border: 1px solid #00ff9d;
+  box-shadow: 0 0 20px #00ff9d;
 }
 
-/* small text */
-.small {
+/* SCAN BAR */
+.scan {
   margin-top: 15px;
-  font-size: 12px;
-  color: #8aa9c6;
-  animation: fadeIn 2.2s ease;
+  height: 6px;
+  width: 100%;
+  background: #111;
+  border: 1px solid #00ff9d;
+  overflow: hidden;
+}
+
+.scan::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: #00ff9d;
+  animation: scanMove 2s infinite;
+}
+
+@keyframes scanMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+.small {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #66ffcc;
+  text-align: center;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="glow"></div>
+<canvas id="matrix"></canvas>
 
-<div class="container">
+<div class="terminal">
 
-  <h1>KeyPulse Nexus</h1>
+<h1>KEYPULSE NEXUS</h1>
 
-  <p>
-    Cybersecurity educational desktop simulation for safe keyboard analytics,
-    session tracking, and frequency visualization.
-  </p>
+<div id="text"></div>
 
-  <ul class="features">
-    <li>✔ Local sandbox typing environment</li>
-    <li>✔ Real-time key frequency analytics</li>
-    <li>✔ Session logs + exportable reports</li>
-    <li>✔ Visualization charts for presentations</li>
-  </ul>
+<div class="scan"></div>
 
-  <a class="btn"
-     href="https://github.com/Romaissaa4/KeyPulseNexus/releases/latest/download/KeyPulseNexus.exe"
-     target="_blank">
-     Download Application (.exe)
-  </a>
+<a class="btn"
+href="https://github.com/Romaissaa4/KeyPulseNexus/releases/latest/download/KeyPulseNexus.exe"
+target="_blank">
+DOWNLOAD PAYLOAD
+</a>
 
-  <div class="small">
-    Windows App • Cybersecurity Academic Project • Safe Demo Environment
-  </div>
+<div class="small">
+SYSTEM STATUS: SAFE SIMULATION • LOCAL ANALYSIS ONLY
+</div>
 
 </div>
+
+<script>
+
+/* MATRIX EFFECT */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
+letters = letters.split("");
+
+let fontSize = 14;
+let columns = canvas.width / fontSize;
+let drops = Array(columns).fill(1);
+
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#00ff9d";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i]=0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix,33);
+
+/* TYPING EFFECT */
+const lines = [
+"> Initializing KeyPulse Nexus...",
+"> Loading secure sandbox environment...",
+"> Monitoring local keyboard input only...",
+"> Building frequency analysis engine...",
+"> SYSTEM READY ✔"
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+const speed = 40;
+
+function type(){
+  if(i < lines.length){
+    if(j < lines[i].length){
+      current += lines[i][j];
+      document.getElementById("text").innerHTML = current + "_";
+      j++;
+      setTimeout(type,speed);
+    } else {
+      current += "\n";
+      i++;
+      j = 0;
+      setTimeout(type,500);
+    }
+  } else {
+    document.getElementById("text").innerHTML = current;
+  }
+}
+
+type();
+
+</script>
 
 </body>
 </html>
