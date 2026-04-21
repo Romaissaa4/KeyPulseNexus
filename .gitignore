@@ -1,0 +1,6 @@
+__pycache__/
+build/
+dist/
+*.pyc
+keypulse_nexus_log.txt
+keypulse_nexus_brief.txt
