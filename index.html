@@ -1,87 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>KeyPulse Nexus</title>
+<meta charset="UTF-8">
+<title>KeyPulse Nexus</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #07121f;
-      color: #edf5ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    .card {
-      background: #0d1c30;
-      padding: 50px;
-      border-radius: 18px;
-      text-align: center;
-      width: 60%;
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
-    }
+body {
+  background: radial-gradient(circle at top, #0a1a2a, #050b12);
+  color: #eaf6ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    h1 {
-      color: #16c6e5;
-      margin-bottom: 10px;
-    }
+/* Glow background effect */
+.glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: #16c6e5;
+  filter: blur(180px);
+  opacity: 0.15;
+  top: -100px;
+  left: -100px;
+}
 
-    p {
-      color: #cbd6e6;
-      font-size: 15px;
-      line-height: 1.6;
-    }
+/* Card */
+.container {
+  position: relative;
+  background: rgba(13, 28, 48, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 20px;
+  width: 650px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(22, 198, 229, 0.2);
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 15px 35px;
-      background: #16c6e5;
-      color: #04111a;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
+/* Title */
+h1 {
+  font-size: 40px;
+  color: #16c6e5;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
 
-    .btn:hover {
-      background: #13a8c2;
-    }
+/* Subtitle */
+p {
+  color: #bcd3e6;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
 
-    .small {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #9db3d1;
-    }
-  </style>
+/* Feature box */
+.features {
+  text-align: left;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+}
+
+.features li {
+  margin: 8px 0;
+  color: #d9e9ff;
+  font-size: 14px;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: linear-gradient(90deg, #16c6e5, #1fd3a2);
+  color: #04111a;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px rgba(22,198,229,0.4);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(22,198,229,0.6);
+}
+
+/* small text */
+.small {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #8aa9c6;
+}
+</style>
+
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>KeyPulse Nexus</h1>
+<div class="glow"></div>
 
-    <p>
-      Cybersecurity educational desktop simulation tool.<br>
-      Designed for safe keyboard analytics, session tracking,
-      and frequency visualization in classroom demos.
-    </p>
+<div class="container">
 
-    <!-- 🔥 DOWNLOAD BUTTON -->
-    <a class="btn"
-       href="https://github.com/Romaissaa4/KeyPulseNexus/releases/latest/download/KeyPulseNexus.exe"
-       target="_blank">
-      Download App (.exe)
-    </a>
+  <h1>KeyPulse Nexus</h1>
 
-    <div class="small">
-      Windows only • Safe demo project • No system-wide keylogging
-    </div>
+  <p>
+    A cybersecurity educational desktop simulation designed for
+    safe keyboard analytics, real-time session tracking,
+    and frequency visualization.
+  </p>
+
+  <ul class="features">
+    <li>✔ Local typing sandbox (safe demo environment)</li>
+    <li>✔ Live key frequency analytics dashboard</li>
+    <li>✔ Session logging + exportable reports</li>
+    <li>✔ Visualization charts for presentations</li>
+  </ul>
+
+  <a class="btn"
+     href="https://github.com/Romaissaa4/KeyPulseNexus/releases/latest/download/KeyPulseNexus.exe"
+     target="_blank">
+     Download Application (.exe)
+  </a>
+
+  <div class="small">
+    Windows Desktop App • Cybersecurity Academic Project • No system-wide monitoring
   </div>
+
+</div>
 
 </body>
 </html>
